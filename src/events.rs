@@ -222,6 +222,9 @@ pub enum VirtualKeyCode {
     /// The space bar.
     Space,
 
+    /// The "Compose" key on Linux.
+    Compose,
+
     Numlock,
     Numpad0,
     Numpad1,
