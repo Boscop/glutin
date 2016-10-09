@@ -498,7 +498,7 @@ impl Drop for Window {
     #[inline]
     fn drop(&mut self) {
         callback::CONTEXT_STASH.with(|context_stash| {
-            (*context_stash.borrow_mut()).remove(&self.window.0).unwrap();
+            (*context_stash.borrow_mut()).remove(&self.window.0)/*.unwrap()*/; // unwrap can fail
         });
         unsafe {
             // we don't call MakeCurrent(0, 0) because we are not sure that the context
