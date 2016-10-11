@@ -387,11 +387,6 @@ impl Window {
             Ok(())
         }
     }
-
-    #[inline]
-    pub fn get_handle(&self) -> winapi::HWND {
-        self.window.0
-    }
 }
 
 impl GlContext for Window {

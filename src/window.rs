@@ -514,12 +514,6 @@ impl Window {
     pub fn kill_timer(&self, timer_id: winapi::UINT_PTR) -> Result<(), ()> {
         self.window.kill_timer(timer_id)
     }
-
-    #[cfg(windows)]
-    #[inline]
-    pub fn get_handle(&self) -> winapi::HWND {
-        self.window.get_handle()
-    }
 }
 
 impl GlContext for Window {

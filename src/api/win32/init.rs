@@ -73,10 +73,11 @@ pub fn new_window(window: &WindowAttributes, pf_reqs: &PixelFormatRequirements,
         multitouch: window.multitouch,
     };
 
-    if let Some(parent) = window.parent {
+    let parent = if let Some(parent) = window.parent { parent.window } else { ptr::null_mut() };
+    if !parent.is_null() {
         unsafe {
             // creating and sending the `Window`
-            match init(title, &window2, &pf_reqs, &opengl, egl, parent.window as winapi::HWND) {
+            match init(title, &window2, &pf_reqs, &opengl, egl, parent as winapi::HWND) {
                 Ok(w) => tx.send(Ok(w)).ok(),
                 Err(e) => tx.send(Err(e)).ok(),
             };
